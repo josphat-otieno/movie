@@ -22,7 +22,6 @@ class User(UserMixin,db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     subscription = db.relationship('Subscription', backref='user', lazy='dynamic')
-    reviews = db.relationship('Review', backref = 'user', lazy="dynamic")
 
     @property
     def password(self):
@@ -45,6 +44,7 @@ class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
     users = db.relationship('User', backref = 'role', lazy = "dynamic")
+    
 
     def __repr__(self):
         return f'User{self.name}' 

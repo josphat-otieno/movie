@@ -6,6 +6,13 @@ from flask_login import login_required
 from .. import db, photos
 
 
+@main.route('/')
+def index():
+    title="Home- welcome to the best movie review website online"
+    message ='Welcome to movie database'
+
+    return render_template('index.html', message=message, title=title)
+
 @main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
