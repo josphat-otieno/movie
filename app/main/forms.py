@@ -12,3 +12,8 @@ class Subscribe(FlaskForm):
     phone_number= IntegerField("Enter Your Phone Number", validators=[Required()])
     country = StringField("Enter your country or region", validators=[Required()])
     submit = SubmitField('Subscribe')
+
+class ReviewForm(FlaskForm):
+    title= StringField('Review title', validators=[Required()])
+    review = TextAreaField('Movie review')
+    submit=SubmitField('Submit')
