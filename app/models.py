@@ -23,6 +23,7 @@ class User(UserMixin,db.Model):
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     password_hash=db.Column(db.String(255))
     bio = db.Column(db.String(255))
+    age = db.Column(db.Integer)
     profile_pic_path = db.Column(db.String())
     subscription = db.relationship('Subscription', backref='user', lazy='dynamic')
 
