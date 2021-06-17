@@ -1,12 +1,12 @@
 from flask import render_template,request, redirect, url_for,abort
 from . import main
 from .forms import Subscribe, UpdateProfile
-from ..models import User
+from ..models import User, Role,Subscription
 from flask_login import login_required
 from .. import db, photos
 
 
-@main.route('/')
+@main.route('/', methods= ['GET','POST'])
 def index():
     title="Home- welcome to the best movie review website online"
     message ='Welcome to movie database'
