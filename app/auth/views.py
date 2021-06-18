@@ -3,8 +3,9 @@ from ..models import User
 from  .import auth
 from .forms import LoginForm, RegistrationForm
 from .. import db
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from ..email import mail_message
+from app import email
 
 @auth.route('/login', methods = ['GET','POST'])
 def login():
@@ -39,3 +40,4 @@ def register():
 def logout():
     logout_user()
     return redirect(url_for("main.index"))
+
