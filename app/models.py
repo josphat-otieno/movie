@@ -1,11 +1,15 @@
+from . import db
+from werkzeug.security import generate_password_hash,check_password_hash
+from flask_login import UserMixin
+from . import login_manager
+from datetime import datetime
+from app.models import *
 
-# from werkzeug.security import generate_password_hash,check_password_hash
-# from flask_login import UserMixin
-# from datetime import datetime
-# from . import login_manager
 
 
-
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 class Movie:
     '''
     Movie class to define Movie Objects
@@ -17,6 +21,8 @@ class Movie:
         self.poster = "https://image.tmdb.org/t/p/w500/" + poster
         self.vote_average = vote_average
         self.vote_count = vote_count
+
+
 # class Review(db.Model):
 #     __tablename__ = 'reviews'
 
@@ -82,9 +88,7 @@ from time import time
 # from app import app
 
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+
 
 
 
@@ -147,3 +151,13 @@ class Subscription(db.Model):
     phone_number = db.Column(db.Integer)
     country = db.Column(db.String(255))
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+
+
+class Genres:
+    def __init__(self,id,name):
+        self.id = id
+        self.name = name
+
+
+
+

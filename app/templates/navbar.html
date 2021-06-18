@@ -12,10 +12,11 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li> <a href="/">Home</a> </li>
+                <li> <a href="{{url_for('main.genres')}}">Genres</a> </li>
             </ul>
         </div>
     </div>
-    <ul class="nav navbar-nav navbar-right">
+    <!-- <ul class="nav navbar-nav navbar-right">
         {% if current_user.is_authenticated %}
         <li><a href="{{url_for('main.subscribe',uname=current_user.username)}}">Subscribe</a></li>
         <li><a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
@@ -23,5 +24,5 @@
         {% else %}
         <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
         {%endif%}
-    </ul>
+    </ul> -->
 </div>
