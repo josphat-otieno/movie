@@ -13,6 +13,9 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 class Movie:
     '''
     Movie class to define Movie Objects
@@ -67,7 +70,6 @@ class User(UserMixin,db.Model):
         # except:
             # return
         # return User.query.get(id)
-        # <li class="nav-item" role="presentation"><a class="nav-link" href="{{url_for('main.genres')}}">Genres</a>
 
 class Role(db.Model):
     __tablename__ = 'roles'

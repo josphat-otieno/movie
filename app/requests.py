@@ -1,3 +1,6 @@
+import urllib.request,json
+from .models import Movie, Genres
+
 
 import urllib.request,json
 from .models import Movie,Genres,Trailer
@@ -12,9 +15,9 @@ genres_url = None
 genre_movies_url = None
 
 def configure_request(app):
-    global api_key,base_url,genres_url,genre_movies_url
+    global api_key,base_url, genres_url, genre_movies_url
     api_key = app.config['MOVIE_API_KEY']
-    base_url =app.config['MOVIE_API_BASE_URL']
+    base_url = app.config['MOVIE_API_BASE_URL']
     genres_url = app.config['GENRES_URL']
     genre_movies_url = app.config['GENRE_MOVIES_URL']
 
