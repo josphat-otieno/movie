@@ -1,6 +1,5 @@
 from flask import render_template,request, redirect, url_for,abort
 from . import main
-<<<<<<< HEAD
 from ..requests import get_movies,get_movie,search_movie,get_genres,get_genre_movies,watch_trailer
 from .forms import Subscribe, UpdateProfile
 from ..models import User, Review
@@ -31,17 +30,6 @@ def index():
 
 @main.route('/movie/<int:id>')
 def movie(id):
-=======
-from .forms import Subscribe, UpdateProfile
-
-from ..models import User
-from flask_login import login_required, get_genres, get_genre_movies
-
-from ..models import User, Role,Subscription
-from flask_login import login_required
-
-from .. import db, photos
->>>>>>> 169901c4683a80ef074fa6eb001b57ddbdb6c618
 
     '''
     View movie page function that returns the movie details page and its data
@@ -50,7 +38,6 @@ from .. import db, photos
     title = f'{movie.title}'
     reviews = Review.get_reviews(movie.id)
 
-<<<<<<< HEAD
     return render_template('movie.html',title = title,movie = movie,reviews = reviews)
 
 @main.route('/search/<movie_name>')
@@ -63,12 +50,6 @@ def search(movie_name):
     searched_movies = search_movie(movie_name_format)
     title = f'search results for {movie_name}'
     return render_template('search.html',movies = searched_movies)
-=======
-@main.route('/', methods= ['GET','POST'])
-def index():
-    title="Home- welcome to the best movie review website online"
-    message ='Welcome to movie database'
->>>>>>> 169901c4683a80ef074fa6eb001b57ddbdb6c618
 
 
 @main.route('/user/<uname>')
@@ -132,7 +113,6 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
 
-<<<<<<< HEAD
 @main.route('/review/<int:id>')
 def single_review(id):
     review=Review.query.get(id)
@@ -140,22 +120,15 @@ def single_review(id):
         abort(404)
     format_review = markdown2.markdown(review.movie_review,extras=["code-friendly", "fenced-code-blocks"])
     return render_template('review.html',review = review,format_review=format_review)
-=======
->>>>>>> 169901c4683a80ef074fa6eb001b57ddbdb6c618
 
 @main.route('/genres')
 def genres():
     genres = get_genres()
     return render_template('genres.html',genres = genres)
-<<<<<<< HEAD
-
-=======
->>>>>>> 169901c4683a80ef074fa6eb001b57ddbdb6c618
 @main.route('/genres/<int:id>/movies')
 def genre_movies(id):
     movies = get_genre_movies(id)
     return render_template('genre_movie.html',movies = movies)
-<<<<<<< HEAD
 
 #ROUTE for the movie trailer
 @main.route('/trailer/<int:id>')
@@ -163,5 +136,3 @@ def trailer(id):
     trailer = watch_trailer(id)
     trailer_url = 'https://www.youtube.com/watch?v='+trailer
     return redirect(trailer_url)
-=======
->>>>>>> 169901c4683a80ef074fa6eb001b57ddbdb6c618
