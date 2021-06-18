@@ -14,7 +14,7 @@ genre_movies_url = None
 def configure_request(app):
     global api_key,base_url,genres_url,genre_movies_url
     api_key = app.config['MOVIE_API_KEY']
-    base_url = app.config['MOVIE_API_BASE_URL']
+    base_url =app.config['MOVIE_API_BASE_URL']
     genres_url = app.config['GENRES_URL']
     genre_movies_url = app.config['GENRE_MOVIES_URL']
 
@@ -29,7 +29,7 @@ def get_movies(category):
         get_movies_response = json.loads(get_movies_data)
 
         movie_results = None
-
+    
         if get_movies_response['results']:
             movie_results_list = get_movies_response['results']
             movie_results = process_results(movie_results_list)
@@ -159,6 +159,5 @@ def process_trailer(trailer_list):
         key=trailer_item.get('key')
         trailer_object = Trailer(key)
         trailer_results.append(trailer_object)
-        teazer = trailer_results[0].key
-    
-    return teazer
+        trailer = trailer_results[0].key
+    return trailer

@@ -1,7 +1,7 @@
 from flask import render_template,request, redirect, url_for,abort
 from . import main
 from ..requests import get_movies,get_movie,search_movie,get_genres,get_genre_movies,watch_trailer
-from .forms import Subscribe, UpdateProfile,
+from .forms import Subscribe, UpdateProfile
 from ..models import User, Review
 from flask_login import login_required
 from .. import db, photos
@@ -15,7 +15,6 @@ def index():
     View root page function that returns the index page and its data
     '''
 
-    # Getting popular movie
     popular_movies = get_movies('popular')
     upcoming_movie = get_movies('upcoming')
     now_showing_movie = get_movies('now_playing')

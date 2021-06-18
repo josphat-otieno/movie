@@ -1,11 +1,12 @@
 import os
 
 class Config:
+    MOVIE_API_BASE_URL ='https://api.themoviedb.org/3/movie/{}?api_key={}'
     SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://jose:joseotis45@localhost/movie'
     SECRET_KEY= os.environ.get('SECRET_KEY')
     GENRES_URL ='https://api.themoviedb.org/3/genre/movie/list?api_key={}'
     GENRE_MOVIES_URL = 'https://api.themoviedb.org/3/discover/movie?api_key={}&with_genres={}'
-
+    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://jose:joseotis45@localhost/movie'
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
      
     MAIL_SERVER= 'smtp.gmail.com'
